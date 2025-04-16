@@ -8,10 +8,10 @@ export default defineConfig([
   {
     files: ["**/*.{js,mjs,cjs}"],
     languageOptions: {
-      globals: { ...browser, ...node }, // Combining both globals
+      globals: { ...browser, ...node },
       parserOptions: {
-        ecmaVersion: "latest", // You can specify ECMAScript version here
-        sourceType: "module", // This enables ES module syntax
+        ecmaVersion: "latest",
+        sourceType: "module",
       },
     },
     plugins: {
@@ -21,6 +21,12 @@ export default defineConfig([
     extends: ["js/recommended"],
     rules: {
       "prettier/prettier": "error",
+    },
+  },
+  {
+    files: ["dist/**/*"], // <-- This applies to all files in the dist folder
+    rules: {
+      "no-unused-vars": "off", // <-- Turn off specific rules for the dist folder
     },
   },
 ]);
